@@ -21,13 +21,25 @@ browser = webdriver.Chrome(executable_path=chromeDriverPath)
 browser.set_window_position(-2000, 0)
 browser.get(url)
 
+minValue = 999999.00;
+maxValue = 0.00;
+
 print ("\n\n****** Sensex: ");
 while (1):
-    sensexValue = browser.find_element(By.XPATH, xPath_sensexValue)
-    sensexValue = sensexValue.text
+    sensexValue = browser.find_element(By.XPATH, xPath_sensexValue);
+    sensexValue = (sensexValue.text);
+    sensexValue = float(sensexValue);
     
-    print ("Timestamp  : ", datetime.datetime.now());
-    print ("Value      : ", sensexValue);
+    if (sensexValue > maxValue):
+        maxValue = sensexValue;
+    
+    if (sensexValue < minValue):
+        minValue = sensexValue;
+    
+    print("Timestamp  : ", datetime.datetime.now());
+    print("Value      : ", sensexValue);
+    print("Highest    : ", maxValue);
+    print("Lowest     : ", minValue);
     print("\n");
     time.sleep(WAIT_TIME);
     browser.refresh();
