@@ -4,7 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
 
-# Duration to wait before page refresh
+# Duration (in seconds) to wait before page refresh
 WAIT_TIME = 10;
 
 # Money control URL
